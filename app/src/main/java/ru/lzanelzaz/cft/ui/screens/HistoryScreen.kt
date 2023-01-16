@@ -37,6 +37,7 @@ fun HistoryScreen(viewModel: BinViewModel = hiltViewModel()) {
                 itemContent = {
                     BinItem(bin = it)
                 })
+            viewModel.updateData()
         }
 }
 

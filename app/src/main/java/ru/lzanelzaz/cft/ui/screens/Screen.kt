@@ -26,12 +26,16 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import ru.lzanelzaz.cft.R
 
-sealed class Screen(val route: String, @StringRes val resourceId: Int, val icon: ImageVector) {
+private sealed class Screen(
+    val route: String,
+    @StringRes val resourceId: Int,
+    val icon: ImageVector
+) {
     object BinInfoScreen : Screen("binInfo", R.string.bin, Icons.Filled.Home)
     object HistoryScreen : Screen("history", R.string.history, Icons.Filled.Search)
 }
 
-val items = listOf(
+private val items = listOf(
     Screen.BinInfoScreen,
     Screen.HistoryScreen,
 )

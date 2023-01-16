@@ -1,6 +1,5 @@
 package ru.lzanelzaz.cft
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -19,14 +18,17 @@ class BinViewModel @Inject constructor(private val repository: AppRepository) : 
     private val _state = MutableStateFlow<State>(State.InputData)
     val state: StateFlow<State> = _state.asStateFlow()
 
-    private val _data = MutableStateFlow<List<BinInfo>>(listOf())
+    private val _data = MutableStateFlow<List<BinInfo>>(emptyList())
     val data: StateFlow<List<BinInfo>> = _data.asStateFlow()
 
     var bin by mutableStateOf("")
         private set
 
-
     init {
+        updateData()
+    }
+
+    fun updateData() {
         viewModelScope.launch {
             _data.value = repository.getAll()
         }
@@ -41,14 +43,14 @@ class BinViewModel @Inject constructor(private val repository: AppRepository) : 
         viewModelScope.launch {
             try {
                 val binInfo = repository.getBinInfo(bin.toInt())
-                Log.i("retrofit response", binInfo.toString())
                 _state.value = State.Valid(binInfo)
                 repository.insertBin(binInfo)
-                _data.value = repository.getAll()
             } catch (e: retrofit2.HttpException) {
                 _state.value = State.ShowError(R.string.noBinInfo)
             } catch (e: java.net.UnknownHostException) {
                 _state.value = State.ShowError(R.string.noInternet)
+            } catch (e: Exception) {
+                _state.value = State.SomethingError(e.toString())
             }
         }
     }
@@ -63,5 +65,6 @@ sealed interface State {
     object LengthError : State
     object InputData : State
     data class ShowError(val messageResource: Int) : State
+    data class SomethingError(val message: String) : State
     data class Valid(val binInfo: BinInfo) : State
 }
