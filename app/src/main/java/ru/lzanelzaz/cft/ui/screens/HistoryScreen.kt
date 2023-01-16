@@ -23,6 +23,7 @@ import ru.lzanelzaz.cft.ui.BinItem
 @Composable
 fun HistoryScreen(viewModel: BinViewModel = hiltViewModel()) {
     val bins by viewModel.data.collectAsState()
+    viewModel.updateData()
     if (bins.isEmpty()) Column(
         Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -37,7 +38,6 @@ fun HistoryScreen(viewModel: BinViewModel = hiltViewModel()) {
                 itemContent = {
                     BinItem(bin = it)
                 })
-            viewModel.updateData()
         }
 }
 
