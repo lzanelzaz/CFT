@@ -6,13 +6,11 @@ import androidx.room.Query
 
 @Dao
 interface BinDao {
-    @Query("SELECT * FROM bin")
+    @Query("SELECT * FROM bin ORDER BY id DESC")
     suspend fun getAll(): List<Bin>
-
 
     @Insert
     suspend fun insertBin(bin: Bin)
-
 
 //    @Query("DELETE FROM projects WHERE projectId = :projectId")
 //    fun deleteProject(projectId: String)

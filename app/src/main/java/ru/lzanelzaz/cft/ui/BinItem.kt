@@ -108,7 +108,7 @@ fun Text(number: CardNumber) {
 fun Text(country: Country) {
     val context = LocalContext.current
     Column {
-        Text(country.emoji + " " + country.countryName, style = mediumTextStyle)
+        Text(country.emoji + " " + country.name, style = mediumTextStyle)
         ClickableText(
             text = AnnotatedString(
                 "(${stringResource(R.string.latitude)}: ${country.latitude}, ${
@@ -135,7 +135,7 @@ fun Text(bank: Bank) {
     val context = LocalContext.current
     Column {
         Text(
-            bank.bankName + if (bank.city == null) "" else (", " + bank.city),
+            bank.name + if (bank.city == null) "" else (", " + bank.city),
             style = mediumTextStyle
         )
         if (bank.url != null)

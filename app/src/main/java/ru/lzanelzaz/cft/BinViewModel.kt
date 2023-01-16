@@ -1,5 +1,6 @@
 package ru.lzanelzaz.cft
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -40,6 +41,7 @@ class BinViewModel @Inject constructor(private val repository: AppRepository) : 
         viewModelScope.launch {
             try {
                 val binInfo = repository.getBinInfo(bin.toInt())
+                Log.i("retrofit response", binInfo.toString())
                 _state.value = State.Valid(binInfo)
                 repository.insertBin(binInfo)
                 _data.value = repository.getAll().map { it.binInfo }
