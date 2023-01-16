@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">CFT</string>
+    <string name="binInfo">BIN info</string>
+    <string name="history">History</string>
+
+    <string name="label">Enter the first 8 digits of a card number (BIN)</string>
+    <string name="lengthErrorLabel">8 digits required!</string>
+
+    <string name="getInfo">Get info</string>
+    <string name="noHistory">Your search history appears here</string>
+    <string name="noBinInfo">No matching cards are found</string>
+    <string name="noInternet">Check your Internet connection</string>
+
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="scheme">SCHEME</string>
+    <string name="brand">BRAND</string>
+    <string name="cardNumber">CARD NUMBER</string>
+    <string name="length">LENGTH</string>
+    <string name="luhn">LUHN</string>
+    <string name="type">TYPE</string>
+    <string name="prepaid">PREPAID</string>
+    <string name="country">COUNTRY</string>
+    <string name="bank">BANK</string>
+    <string name="latitude">latitude</string>
+    <string name="longitude">longitude</string>
+
+</resources>
