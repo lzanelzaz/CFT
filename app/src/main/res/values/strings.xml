@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CFT</string>
-    <string name="binInfo">BIN info</string>
+    <string name="bin">BIN</string>
     <string name="history">History</string>
 
     <string name="label">Enter the first 8 digits of a card number (BIN)</string>

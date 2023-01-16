@@ -1,5 +1,7 @@
 package ru.lzanelzaz.cft.ui.screens
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,12 +25,13 @@ import ru.lzanelzaz.cft.State
 import ru.lzanelzaz.cft.ui.BinItem
 
 
+@RequiresApi(Build.VERSION_CODES.Q)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BinInfoScreen(viewModel: BinViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
 
-    Column(modifier = Modifier.padding(8.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    Column(modifier = Modifier.padding(4.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = viewModel.bin,
@@ -43,9 +46,8 @@ fun BinInfoScreen(viewModel: BinViewModel = hiltViewModel()) {
         )
 
         OutlinedButton(onClick = {
-            if (viewModel.bin.length != 8) viewModel.setLengthError() else {
-                viewModel.getBinInfo()
-            }
+            if (viewModel.bin.length != 8) viewModel.setLengthError()
+            else viewModel.getBinInfo()
         }) {
             Text(stringResource(R.string.getInfo))
         }

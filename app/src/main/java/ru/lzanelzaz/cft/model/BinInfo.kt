@@ -1,10 +1,11 @@
 package ru.lzanelzaz.cft.model
 
 data class BinInfo(
+    var bin: String,
     val number: CardNumber = CardNumber(),
-    val scheme: String = "",
-    val type: String = "",
-    val brand: String = "",
+    val scheme: String? = null,
+    val type: String? = null,
+    val brand: String? = null,
     val prepaid: Boolean? = null,
     val country: Country = Country(),
     val bank: Bank = Bank()
@@ -16,16 +17,16 @@ data class CardNumber(
 )
 
 data class Country(
-    val alpha2: String = "",
-    val name: String = "",
-    val emoji: String = "",
-    val currency: String = "",
-    val latitude: String = "",
-    val longitude: String = ""
+    val alpha2: String? = null,
+    val name: String? = null,
+    val emoji: String? = null,
+    val currency: String? = null,
+    val latitude: String? = null,
+    val longitude: String? = null
 )
 
 data class Bank(
-    val name: String = "",
+    val name: String? = null,
     val url: String? = null,
     val phone: String? = null,
     val city: String? = null

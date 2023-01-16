@@ -13,10 +13,12 @@ class AppRepository @Inject constructor(
     private val binDao: BinDao
 ) {
     suspend fun getBinInfo(bin: Int): BinInfo {
-        return apiService.getBinInfo(bin)
+        val response = apiService.getBinInfo(bin)
+        response.bin = bin.toString()
+        return response
     }
 
-    suspend fun getAll(): List<Bin> = binDao.getAll()
+    suspend fun getAll(): List<BinInfo> = binDao.getAll().map { it.binInfo }
 
     suspend fun insertBin(binInfo: BinInfo) {
         binDao.insertBin(Bin(null, binInfo))

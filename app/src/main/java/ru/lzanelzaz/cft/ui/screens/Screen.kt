@@ -1,5 +1,7 @@
 package ru.lzanelzaz.cft.ui.screens
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -25,7 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import ru.lzanelzaz.cft.R
 
 sealed class Screen(val route: String, @StringRes val resourceId: Int, val icon: ImageVector) {
-    object BinInfoScreen : Screen("binInfo", R.string.binInfo, Icons.Filled.Home)
+    object BinInfoScreen : Screen("binInfo", R.string.bin, Icons.Filled.Home)
     object HistoryScreen : Screen("history", R.string.history, Icons.Filled.Search)
 }
 
@@ -34,6 +36,7 @@ val items = listOf(
     Screen.HistoryScreen,
 )
 
+@RequiresApi(Build.VERSION_CODES.Q)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Screen() {
@@ -55,16 +58,10 @@ fun Screen() {
                         selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                         onClick = {
                             navController.navigate(screen.route) {
-                                // Pop up to the start destination of the graph to
-                                // avoid building up a large stack of destinations
-                                // on the back stack as users select items
                                 popUpTo(navController.graph.findStartDestination().id) {
                                     saveState = true
                                 }
-                                // Avoid multiple copies of the same destination when
-                                // reselecting the same item
                                 launchSingleTop = true
-                                // Restore state when reselecting a previously selected item
                                 restoreState = true
                             }
                         }

@@ -28,7 +28,7 @@ class BinViewModel @Inject constructor(private val repository: AppRepository) : 
 
     init {
         viewModelScope.launch {
-            _data.value = repository.getAll().map { it.binInfo }
+            _data.value = repository.getAll()
         }
     }
 
@@ -44,7 +44,7 @@ class BinViewModel @Inject constructor(private val repository: AppRepository) : 
                 Log.i("retrofit response", binInfo.toString())
                 _state.value = State.Valid(binInfo)
                 repository.insertBin(binInfo)
-                _data.value = repository.getAll().map { it.binInfo }
+                _data.value = repository.getAll()
             } catch (e: retrofit2.HttpException) {
                 _state.value = State.ShowError(R.string.noBinInfo)
             } catch (e: java.net.UnknownHostException) {

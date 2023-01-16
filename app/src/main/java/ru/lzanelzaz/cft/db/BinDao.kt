@@ -11,7 +11,4 @@ interface BinDao {
 
     @Insert
     suspend fun insertBin(bin: Bin)
-
-//    @Query("DELETE FROM projects WHERE projectId = :projectId")
-//    fun deleteProject(projectId: String)
 }
