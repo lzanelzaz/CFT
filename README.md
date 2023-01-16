@@ -9,20 +9,14 @@
 4. Нажатие на URL банка, телефон банка, координаты страны отправляет пользователя в приложение,
    которое может обработать эти данные (браузер, звонилка, карты)
 
-Empty history search
-![](screenshots/Empty_history_search.png)
+[Empty history search](screenshots/Empty_history_search.png)
 
-Error input
-![](screenshots/Error_input.png)
+[Error input](screenshots/Error_input.png)
 
-Ok
-![](screenshots/1ok.png)
+[Ok](screenshots/1ok.png)
 
-Ok
-![](screenshots/2ok.png)
+[Ok](screenshots/2ok.png)
 
-No matching cards
-![](screenshots/No_matching_cards.png)
+[No matching cards](screenshots/No_matching_cards.png)
 
-No internet
-![](screenshots/No_internet.png)
+[No internet](screenshots/No_internet.png)
